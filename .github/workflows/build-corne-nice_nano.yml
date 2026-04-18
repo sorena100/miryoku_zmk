@@ -19,5 +19,3 @@ jobs:
       kconfig: '["CONFIG_ZMK_POINTING=y"]'
       branches: '["default"]'
       modules: '["default"]'
-      # This is the important addition for nice_nano on current ZMK:
-      extra_cmake_args: '-DZMK_EXTRA_MODULES=${{ github.workspace }}'
