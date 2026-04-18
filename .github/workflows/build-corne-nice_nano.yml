@@ -1,0 +1,23 @@
+# Build Corne with nice_nano (full size working firmware)
+name: 'Build Corne nice_nano'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/main.yml
+    secrets: inherit
+    with:
+      board: '["nice_nano"]'
+      shield: '["corne_left", "corne_right"]'
+      alphas: '["QWERTY"]'
+      nav: '["vi"]'
+      layers: '["default"]'
+      mapping: '["default"]'
+      custom_config: '["default"]'
+      kconfig: '["CONFIG_ZMK_POINTING=y"]'
+      branches: '["default"]'
+      modules: '["default"]'
+      # This is the important addition for nice_nano on current ZMK:
+      extra_cmake_args: '-DZMK_EXTRA_MODULES=${{ github.workspace }}'
